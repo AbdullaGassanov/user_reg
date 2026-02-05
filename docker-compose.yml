@@ -1,0 +1,30 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb_users
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build: ./backend
+    container_name: backend_users
+    ports:
+      - '4000:4000'
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/users_db
+      - JWT_SECRET=wVI4OW6DG2kLnpQXTh3m6ytfFE_DN37cQXdEdkrYv3mCvJxS0x1k0c2COCSPMJvs
+    depends_on:
+      - mongodb
+
+  frontend:
+    build: ./frontend
+    container_name: frontend_users
+    ports:
+      - '80:80' # Теперь заходим просто на http://localhost
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:

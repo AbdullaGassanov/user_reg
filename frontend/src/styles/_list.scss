@@ -1,0 +1,105 @@
+@use 'mixins' as *;
+
+.users {
+	border: 1px solid gray;
+	border-radius: 5px;
+	min-width: 1200px;
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		border-bottom: 1px solid gray;
+		padding-bottom: 10px;
+
+		&-group {
+			display: flex;
+			justify-content: center;
+			align-items: stretch;
+
+			input[type='text'] {
+				padding: 1rem;
+				border-radius: 20px 0 0 20px;
+				font-size: 1.2rem;
+				outline: none;
+				&:focus {
+					outline: auto;
+				}
+			}
+		}
+
+		&-btn {
+			padding: 0.4rem 1rem;
+			border-radius: 0 20px 20px 0;
+			outline: none;
+			cursor: pointer;
+			font-size: 1.3rem;
+			background-color: #dedef0;
+			transition: 0.2s;
+			&:hover {
+				background-color: #6f6fc4;
+			}
+		}
+
+		margin-bottom: 2rem;
+	}
+
+	&__title {
+		text-align: center;
+		font-size: 1.4rem;
+		border-bottom: 0;
+		margin-bottom: 0.5px;
+	}
+
+	&__table {
+		display: grid;
+		padding: 0.4rem;
+	}
+
+	&__table-hd {
+		@include table-grid(20% 25% 15% 20% 5% 5%);
+		font-size: 1.1rem;
+		font-weight: 700;
+		&-item {
+			@include flex-center();
+		}
+		background-color: #070780;
+		color: white;
+	}
+
+	&__table-row {
+		@include table-grid(20% 25% 15% 20% 5% 5%);
+		@include row-zebra; // Применяем раскраску
+
+		&-item {
+			@include flex-center();
+		}
+
+		// Модификатор для админа
+		&--extended {
+			grid-template-columns: 20% 25% 10% 20% 5% 10% 10%;
+			// Все остальные стили (цвета, border) наследуются от базового &__table-row
+		}
+	}
+}
+
+.btn-delete {
+	padding: 0.3rem 1.6rem;
+	border-radius: 5px;
+	background-color: #8f0000;
+	color: white;
+	outline: none;
+	border: none;
+	font-size: 1rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: 0.2s;
+	&:hover {
+		background-color: #4f0202;
+	}
+}
+
+.btn-active {
+	background-color: #000989;
+}

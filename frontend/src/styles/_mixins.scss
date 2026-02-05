@@ -1,0 +1,42 @@
+@mixin table-grid($cols) {
+	list-style: none;
+	border: 1px solid gray;
+	display: grid;
+	grid-template-columns: $cols;
+	padding: 0;
+	margin: 0;
+}
+
+// Миксин для раскраски строк (Зебра)
+@mixin row-zebra {
+	cursor: pointer;
+	&:nth-child(even) {
+		background-color: rgb(244, 238, 238);
+	}
+	&:nth-child(odd) {
+		background-color: rgb(207, 220, 245);
+	}
+	&:hover {
+		background-color: rgba(111, 111, 196, 0.1);
+	}
+	&:first-child {
+		background-color: rgb(80, 80, 227);
+		font-weight: 700;
+		color: white;
+		&:hover {
+			background-color: rgb(133, 133, 232);
+		}
+	}
+}
+
+@mixin flex-center($pad: 0.3rem 1rem) {
+	padding: $pad;
+	border-right: 1px solid gray;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&:last-child {
+		border-right: none;
+	}
+}
